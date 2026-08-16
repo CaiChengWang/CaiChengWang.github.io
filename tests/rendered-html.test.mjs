@@ -174,12 +174,14 @@ test("keeps the AcadHomepage typography and grid contract", async () => {
 });
 
 test("ships search-engine discovery files", async () => {
-  const [robots, sitemap] = await Promise.all([
+  const [robots, sitemap, exportScript] = await Promise.all([
     readFile(new URL("public/robots.txt", root), "utf8"),
     readFile(new URL("public/sitemap.xml", root), "utf8"),
+    readFile(new URL("scripts/export-github-pages.mjs", root), "utf8"),
   ]);
 
   assert.match(robots, /Sitemap: https:\/\/caichengwang\.github\.io\/sitemap\.xml/);
   assert.match(sitemap, /https:\/\/caichengwang\.github\.io\/zh\//);
   assert.doesNotMatch(sitemap, /https:\/\/caichengwang\.github\.io\/en\//);
+  assert.match(exportScript, /pathname: "\/zh", output: "zh\/index\.html"/);
 });

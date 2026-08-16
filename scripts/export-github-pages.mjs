@@ -9,6 +9,7 @@ const siteUrl = new URL(
 const routes = [
   { pathname: "/", output: "index.html" },
   { pathname: "/en", output: "en/index.html" },
+  { pathname: "/zh", output: "zh/index.html" },
 ];
 
 const { default: worker } = await import(workerUrl.href);
