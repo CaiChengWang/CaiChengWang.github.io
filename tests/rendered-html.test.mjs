@@ -39,6 +39,7 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.match(html, /href="\/en\/"/);
   assert.match(html, /wcc_wy@163\.com/);
   assert.match(html, /Google 学术 · 引用 160\+/);
+  assert.match(html, /href="https:\/\/github\.com\/CaiChengWang"/);
   assert.match(html, /scholar\.google\.com\/citations\?user=4pGYzJ8AAAAJ/);
   assert.match(html, /rel="canonical" href="http:\/\/localhost:3000\/?"/);
   assert.match(html, /src="\/profile\.jpg"/);
@@ -59,6 +60,7 @@ test("renders the English recruitment homepage", async () => {
   assert.match(html, /Selected Publications/);
   assert.match(html, /Focusing on embodied AI, reinforcement-learning post-training for VLA models/);
   assert.match(html, /Google Scholar · 160\+ citations/);
+  assert.match(html, /href="https:\/\/github\.com\/CaiChengWang"/);
   assert.match(html, /scholar\.google\.com\/citations\?user=4pGYzJ8AAAAJ/);
   assert.match(html, /rel="canonical" href="http:\/\/localhost:3000\/en\/"/);
   assert.match(html, /src="\/zju-logo\.png"/);
@@ -91,7 +93,10 @@ test("keeps the AcadHomepage typography and grid contract", async () => {
   assert.match(styles, /max-width:\s*925px/);
   assert.match(styles, /2\.25fr[\s\S]*0\.25fr[\s\S]*0\.625fr[\s\S]*11\.625fr/);
   assert.match(styles, /@media \(min-width:\s*1280px\)/);
-  assert.match(styles, /\.profile-links li\s*\{[\s\S]*?margin-bottom:\s*5px/);
+  assert.match(styles, /\.profile-sidebar\s*\{[\s\S]*?position:\s*sticky[\s\S]*?top:\s*6em/);
+  assert.match(styles, /\.profile-links li\s*\{[\s\S]*?margin-bottom:\s*0/);
+  assert.match(styles, /\.profile-links a\s*\{[\s\S]*?margin-bottom:\s*5px/);
+  assert.match(styles, /Font Awesome 5 Brands/);
   assert.match(homepage, /<ul className="nav-links">/);
 });
 

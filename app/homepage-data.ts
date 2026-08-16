@@ -113,7 +113,7 @@ export const zhContent: HomepageContent = {
     facts: [
       { label: "求职方向", value: "具身智能算法" },
       { label: "预计毕业", value: "2027 年 6 月" },
-      { label: "所在地", value: "杭州 · 浙江大学" },
+      { label: "所在地", value: "杭州，中国" },
     ],
   },
   about: {

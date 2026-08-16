@@ -3,8 +3,10 @@ import type { HomepageContent } from "../homepage-data";
 
 export function AcademicHomepage({ content }: { content: HomepageContent }) {
   const isChinese = content.locale === "zh";
+  const githubUrl = "https://github.com/CaiChengWang";
   const scholarUrl = "https://scholar.google.com/citations?user=4pGYzJ8AAAAJ&hl=zh-CN&oi=ao";
   const scholarLabel = isChinese ? "Google 学术 · 引用 160+" : "Google Scholar · 160+ citations";
+  const institutionLabel = isChinese ? "浙江大学" : "Zhejiang University";
   const [featuredPaper, ...otherPapers] = content.publications;
   const scholarSearch = (title: string) =>
     `https://scholar.google.com/scholar?q=${encodeURIComponent(title)}`;
@@ -50,13 +52,18 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
           />
           <div className="profile-content">
             <h1 className="profile-name">{content.profile.name}</h1>
-            <p className="profile-bio">{content.profile.bio}</p>
           </div>
 
           <div className="profile-links-wrapper">
             <ul className="profile-links">
-              <li className="profile-description">
-                {content.profile.degree}
+              <li className="profile-description">{content.profile.bio}</li>
+              <li>
+                <i className="fas fa-map-marker-alt" aria-hidden="true" />
+                {content.profile.facts[2].value}
+              </li>
+              <li className="profile-institution">
+                <i className="fas fa-map-marker-alt" aria-hidden="true" />
+                {institutionLabel}
                 <Image
                   className="zju-logo"
                   src="/zju-logo.png"
@@ -68,18 +75,6 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                 />
               </li>
               <li>
-                <i className="fas fa-map-marker-alt" aria-hidden="true" />
-                {content.profile.facts[2].value}
-              </li>
-              <li>
-                <i className="fas fa-bullseye" aria-hidden="true" />
-                {content.profile.facts[0].value}
-              </li>
-              <li>
-                <i className="fas fa-calendar-alt" aria-hidden="true" />
-                {content.profile.facts[1].value}
-              </li>
-              <li>
                 <a href="mailto:wcc_wy@163.com">
                   <i className="fas fa-envelope" aria-hidden="true" /> Email
                 </a>
@@ -87,6 +82,11 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
               <li>
                 <a href="tel:+8618154090862">
                   <i className="fas fa-phone" aria-hidden="true" /> 181 5409 0862
+                </a>
+              </li>
+              <li>
+                <a href={githubUrl} target="_blank" rel="noreferrer">
+                  <i className="fab fa-github" aria-hidden="true" /> GitHub
                 </a>
               </li>
               <li>
@@ -106,6 +106,9 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
               </a>
               <a href="tel:+8618154090862" aria-label={isChinese ? "电话" : "Phone"}>
                 <i className="fas fa-phone" aria-hidden="true" />
+              </a>
+              <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
+                <i className="fab fa-github" aria-hidden="true" />
               </a>
               <a href={scholarUrl} target="_blank" rel="noreferrer" aria-label={scholarLabel}>
                 <i className="fas fa-graduation-cap" aria-hidden="true" />
