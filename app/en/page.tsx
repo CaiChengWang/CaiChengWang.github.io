@@ -7,10 +7,10 @@ export const metadata: Metadata = {
   description:
     "Ph.D. candidate at Zhejiang University working on VLA post-training, robot data infrastructure, and real-world deployment.",
   alternates: {
-    canonical: "/en/",
+    canonical: "/",
     languages: {
-      "zh-CN": "/",
-      en: "/en/",
+      "zh-CN": "/zh/",
+      en: "/",
     },
   },
   openGraph: {

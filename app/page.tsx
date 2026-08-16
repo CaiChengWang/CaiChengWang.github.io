@@ -1,6 +1,6 @@
 import { AcademicHomepage } from "./components/AcademicHomepage";
-import { zhContent } from "./homepage-data";
+import { enContent } from "./homepage-data";
 
 export default function Home() {
-  return <AcademicHomepage content={zhContent} />;
+  return <AcademicHomepage content={enContent} />;
 }

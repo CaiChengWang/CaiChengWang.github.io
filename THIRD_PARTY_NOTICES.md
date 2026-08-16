@@ -32,3 +32,19 @@ The bundled Font Awesome Free font is distributed under the SIL Open Font
 License 1.1. Font Awesome icon metadata and supporting code are licensed under
 CC BY 4.0 and the MIT License respectively. See
 [Font Awesome Free License](https://fontawesome.com/license/free).
+
+## University emblems
+
+The Zhejiang University and Xidian University emblems are used solely to
+identify the candidate's educational institutions. The Xidian University
+emblem was cropped from the official website's header mark.
+
+## Meituan logo
+
+The Meituan logo is used solely to identify the candidate's internship
+employer and was obtained from the official Meituan website.
+
+## Simple Silicon Innovation logo
+
+The Simple Silicon Innovation logo is used solely to identify the candidate's
+internship employer and was obtained from the company's official website.

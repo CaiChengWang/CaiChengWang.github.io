@@ -6,46 +6,46 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   ),
   title: {
-    default: "王才城｜具身智能算法",
-    template: "%s｜王才城",
+    default: "Caicheng Wang | Embodied AI",
+    template: "%s | Caicheng Wang",
   },
   description:
-    "浙江大学机械工程博士，专注 VLA 真机策略后训练、机器人数据采集基础设施与真机部署。",
+    "Ph.D. candidate at Zhejiang University working on VLA post-training, robot data infrastructure, and real-world deployment.",
   keywords: [
-    "王才城",
-    "具身智能",
+    "Caicheng Wang",
+    "embodied AI",
     "VLA",
-    "机器人学习",
-    "策略后训练",
+    "robot learning",
+    "policy post-training",
     "Human-in-the-Loop",
   ],
   alternates: {
     canonical: "/",
     languages: {
-      "zh-CN": "/",
-      en: "/en/",
+      "zh-CN": "/zh/",
+      en: "/",
     },
   },
   openGraph: {
-    title: "王才城｜具身智能算法",
+    title: "Caicheng Wang | Embodied AI",
     description:
-      "VLA 策略后训练、机器人数据采集基础设施与真机部署。",
+      "VLA post-training, robot data infrastructure, and real-world deployment.",
     type: "website",
-    locale: "zh_CN",
+    locale: "en_US",
     images: [
       {
         url: "/og.png",
         width: 1200,
         height: 630,
-        alt: "王才城具身智能算法个人主页",
+        alt: "Caicheng Wang — Embodied AI",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "王才城｜具身智能算法",
+    title: "Caicheng Wang | Embodied AI",
     description:
-      "VLA 策略后训练、机器人数据采集基础设施与真机部署。",
+      "VLA post-training, robot data infrastructure, and real-world deployment.",
     images: ["/og.png"],
   },
 };
@@ -60,7 +60,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="en">
       <head>
         <link
           rel="preload"

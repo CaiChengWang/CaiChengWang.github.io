@@ -5,8 +5,8 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
   const isChinese = content.locale === "zh";
   const githubUrl = "https://github.com/CaiChengWang";
   const scholarUrl = "https://scholar.google.com/citations?user=4pGYzJ8AAAAJ&hl=zh-CN&oi=ao";
-  const scholarLabel = isChinese ? "Google 学术 · 引用 160+" : "Google Scholar · 160+ citations";
-  const institutionLabel = isChinese ? "浙江大学" : "Zhejiang University";
+  const scholarLabel = "Google Scholar";
+  const citationLabel = isChinese ? "Google Scholar 引用" : "Google Scholar citations";
   const [featuredPaper, ...otherPapers] = content.publications;
   const scholarSearch = (title: string) =>
     `https://scholar.google.com/scholar?q=${encodeURIComponent(title)}`;
@@ -61,27 +61,9 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                 <i className="fas fa-map-marker-alt" aria-hidden="true" />
                 {content.profile.facts[2].value}
               </li>
-              <li className="profile-institution">
-                <i className="fas fa-map-marker-alt" aria-hidden="true" />
-                {institutionLabel}
-                <Image
-                  className="zju-logo"
-                  src="/zju-logo.png"
-                  alt=""
-                  width={180}
-                  height={180}
-                  aria-hidden="true"
-                  unoptimized
-                />
-              </li>
               <li>
                 <a href="mailto:wcc_wy@163.com">
                   <i className="fas fa-envelope" aria-hidden="true" /> Email
-                </a>
-              </li>
-              <li>
-                <a href="tel:+8618154090862">
-                  <i className="fas fa-phone" aria-hidden="true" /> 181 5409 0862
                 </a>
               </li>
               <li>
@@ -99,13 +81,16 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                   <i className="fas fa-language" aria-hidden="true" /> {content.alternateLanguageLabel}
                 </a>
               </li>
+              <li className="profile-job-status">
+                <i className="fas fa-briefcase" aria-hidden="true" />
+                {isChinese
+                  ? "寻找具身智能方向的工作机会"
+                  : "Seeking opportunities in Embodied AI"}
+              </li>
             </ul>
             <div className="profile-links-mobile" aria-label={isChinese ? "联系方式" : "Contact links"}>
               <a href="mailto:wcc_wy@163.com" aria-label="Email">
                 <i className="fas fa-envelope" aria-hidden="true" />
-              </a>
-              <a href="tel:+8618154090862" aria-label={isChinese ? "电话" : "Phone"}>
-                <i className="fas fa-phone" aria-hidden="true" />
               </a>
               <a href={githubUrl} target="_blank" rel="noreferrer" aria-label="GitHub">
                 <i className="fab fa-github" aria-hidden="true" />
@@ -123,13 +108,63 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
         <div className="content-column" id="main-content" tabIndex={-1}>
           <section className="about-section" id="about">
             <h2 className="visually-hidden">{content.about.title}</h2>
-            {content.about.paragraphs.map((paragraph) => (
-              <p key={paragraph}>{paragraph}</p>
-            ))}
             <p>
+              {content.about.introduction.professionalPrefix}
+              <span className="about-institution">
+                {content.about.introduction.employer}
+                <Image
+                  className="company-logo"
+                  src="/meituan-logo.png"
+                  alt=""
+                  width={100}
+                  height={100}
+                  aria-hidden="true"
+                  unoptimized
+                />
+              </span>
+              {content.about.introduction.professionalSuffix}
+            </p>
+            <p>
+              {content.about.introduction.academicPrefix}
+              <span className="about-institution">
+                {content.about.introduction.institution}
+                <Image
+                  className="university-logo"
+                  src="/zju-logo.png"
+                  alt=""
+                  width={180}
+                  height={180}
+                  aria-hidden="true"
+                  unoptimized
+                />
+              </span>
+              {content.about.introduction.afterInstitution}
+              <span className="about-institution">
+                {content.about.introduction.undergraduateInstitution}
+                <Image
+                  className="university-logo"
+                  src="/xidian-logo.png"
+                  alt=""
+                  width={64}
+                  height={64}
+                  aria-hidden="true"
+                  unoptimized
+                />
+              </span>
+              {content.about.introduction.academicSuffix}
               {content.about.resultPrefix}
               <strong>{content.about.resultStrong}</strong>
               {content.about.resultSuffix}
+              <a
+                className="scholar-citation-badge"
+                href={scholarUrl}
+                target="_blank"
+                rel="noreferrer"
+                aria-label={`${citationLabel} 160+`}
+              >
+                <span>{citationLabel}</span>
+                <strong>160+</strong>
+              </a>
             </p>
           </section>
 
@@ -138,7 +173,22 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
             {content.internships.map((internship) => (
               <article className="cv-entry" key={internship.company}>
                 <div className="entry-heading">
-                  <h3>{internship.company}</h3>
+                  <h3>
+                    <Image
+                      className={`company-logo internship-logo${
+                        internship.logo === "/siliconone-logo.png"
+                          ? " internship-logo-monochrome"
+                          : ""
+                      }`}
+                      src={internship.logo}
+                      alt=""
+                      width={100}
+                      height={100}
+                      aria-hidden="true"
+                      unoptimized
+                    />
+                    {internship.company}
+                  </h3>
                   <time>{internship.period}</time>
                 </div>
                 <p className="entry-role">{internship.role}</p>
@@ -170,11 +220,15 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
             <h2><span aria-hidden="true">📝</span> {content.sectionLabels.publications}</h2>
             <div className="paper-list">
               <article className="paper-box">
-                <div className="paper-box-image" aria-hidden="true">
-                  <div className="paper-image-placeholder">
-                    <span className="paper-badge">{featuredPaper.abbr}</span>
-                    <strong>{featuredPaper.abbr}</strong>
-                  </div>
+                <div className="paper-box-image">
+                  <Image
+                    className="paper-figure"
+                    src="/featured-paper.jpg"
+                    alt={`Graphical abstract for ${featuredPaper.title}`}
+                    width={2213}
+                    height={877}
+                    unoptimized
+                  />
                 </div>
                 <div className="paper-box-text">
                   <h3>
@@ -198,7 +252,9 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
             <h2><span aria-hidden="true">🎖</span> {content.sectionLabels.honors}</h2>
             <ul className="plain-list">
               {content.honors.map((honor) => (
-                <li key={honor}>{honor}</li>
+                <li key={honor.text}>
+                  {honor.featured ? <strong>{honor.text}</strong> : honor.text}
+                </li>
               ))}
             </ul>
           </section>

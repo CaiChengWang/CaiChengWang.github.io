@@ -15,7 +15,16 @@ export type HomepageContent = {
   };
   about: {
     title: string;
-    paragraphs: string[];
+    introduction: {
+      professionalPrefix: string;
+      employer: string;
+      professionalSuffix: string;
+      academicPrefix: string;
+      institution: string;
+      afterInstitution: string;
+      undergraduateInstitution: string;
+      academicSuffix: string;
+    };
     resultPrefix: string;
     resultStrong: string;
     resultSuffix: string;
@@ -30,6 +39,7 @@ export type HomepageContent = {
   };
   internships: Array<{
     company: string;
+    logo: string;
     role: string;
     period: string;
     summary: string;
@@ -47,7 +57,7 @@ export type HomepageContent = {
     venue: string;
     note: string;
   }>;
-  honors: string[];
+  honors: Array<{ text: string; featured?: boolean }>;
   education: Array<{ period: string; school: string; degree: string }>;
   skills: Array<{ label: string; value: string }>;
   footer: string;
@@ -96,7 +106,7 @@ export const zhContent: HomepageContent = {
   locale: "zh",
   languageLabel: "中文",
   alternateLanguageLabel: "English",
-  alternateLanguageHref: "/en/",
+  alternateLanguageHref: "/",
   skipLabel: "跳到主要内容",
   nav: [
     { href: "#about", label: "关于我" },
@@ -118,10 +128,17 @@ export const zhContent: HomepageContent = {
   },
   about: {
     title: "关于我",
-    paragraphs: [
-      "我是浙江大学机械工程学院博士研究生，研究与实践方向覆盖机器人学习、强化学习与具身智能。目前在美团 LongCat 基座大模型团队开展具身智能前沿研究实习。",
-      "我的核心优势是围绕真实机器人建立完整闭环：从数采基础设施搭建与数据处理出发，在预训练 VLA 基座上进行策略后训练，并将策略部署到真实机械臂系统中持续验证与迭代。",
-    ],
+    introduction: {
+      professionalPrefix: "我目前在",
+      employer: "美团 LongCat 基座大模型团队",
+      professionalSuffix:
+        "担任具身智能前沿研究实习生，主要负责真实机器人 VLA 策略的人在环强化学习后训练。同时，我也搭建支撑这项工作的真机基础设施，包括遥操作与数据采集系统，以及策略部署与评测流程。",
+      academicPrefix: "我是",
+      institution: "浙江大学机械工程学院",
+      afterInstitution: "博士研究生，本科毕业于",
+      undergraduateInstitution: "西安电子科技大学",
+      academicSuffix: "。",
+    },
     resultPrefix: "目前已发表",
     resultStrong: "SCI 论文 9 篇（ESI 高被引 2 篇、热点论文 1 篇）",
     resultSuffix: "，另有 EI 会议论文 5 篇、授权国家发明专利 1 项。",
@@ -137,6 +154,7 @@ export const zhContent: HomepageContent = {
   internships: [
     {
       company: "美团 · LongCat 基座大模型团队",
+      logo: "/meituan-logo.png",
       role: "具身智能前沿研究实习生",
       period: "2026.04 — 至今",
       summary:
@@ -150,6 +168,7 @@ export const zhContent: HomepageContent = {
     },
     {
       company: "杭州无问硅一科技有限公司",
+      logo: "/siliconone-logo.png",
       role: "具身智能算法实习生 · 真机遥操作",
       period: "2026.01 — 2026.04",
       summary:
@@ -196,12 +215,12 @@ export const zhContent: HomepageContent = {
     ][index],
   })),
   honors: [
-    "2022—2023 年度浙江大学研究生国家奖学金",
-    "2023 年度浙江省专业学位研究生优秀实践成果奖",
-    "2022—2023、2023—2024 年度浙江大学优秀研究生",
-    "2023—2024 年度浙江大学潍柴动力奖学金",
-    "国际大学生数学建模竞赛特等提名奖（Top 1%）",
-    "陕西省优秀毕业生",
+    { text: "2022—2023 年度浙江大学研究生国家奖学金", featured: true },
+    { text: "2023 年度浙江省专业学位研究生优秀实践成果奖" },
+    { text: "2022—2023、2023—2024 年度浙江大学优秀研究生" },
+    { text: "2023—2024 年度浙江大学潍柴动力奖学金" },
+    { text: "美国大学生数学建模竞赛（MCM）Finalist（Top 1%）", featured: true },
+    { text: "陕西省优秀毕业生", featured: true },
   ],
   education: [
     {
@@ -232,7 +251,7 @@ export const enContent: HomepageContent = {
   locale: "en",
   languageLabel: "English",
   alternateLanguageLabel: "中文",
-  alternateLanguageHref: "/",
+  alternateLanguageHref: "/zh/",
   skipLabel: "Skip to main content",
   nav: [
     { href: "#about", label: "About" },
@@ -245,7 +264,7 @@ export const enContent: HomepageContent = {
   profile: {
     name: "Caicheng Wang",
     degree: "Ph.D. Candidate at Zhejiang University",
-    bio: "Focusing on embodied AI, reinforcement-learning post-training for VLA models, and robot data infrastructure.",
+    bio: "Focusing on embodied AI, reinforcement learning post-training for VLA models, and robot data infrastructure.",
     facts: [
       { label: "Position sought", value: "Embodied AI Algorithm" },
       { label: "Expected graduation", value: "June 2027" },
@@ -254,15 +273,22 @@ export const enContent: HomepageContent = {
   },
   about: {
     title: "About Me",
-    paragraphs: [
-      "I am a Ph.D. candidate at the College of Mechanical Engineering, Zhejiang University. My research and engineering experience spans robot learning, reinforcement learning, and embodied AI. I am currently an Embodied AI Research Intern with Meituan's LongCat foundation-model team.",
-      "My strength is building a complete real-robot learning loop: data-collection infrastructure, data processing, policy post-training on top of pretrained VLA models, and iterative deployment and evaluation on physical robots.",
-    ],
+    introduction: {
+      professionalPrefix: "I am currently an Embodied AI Research Intern on ",
+      employer: "Meituan's LongCat foundation-model team",
+      professionalSuffix:
+        ", where I focus on human-in-the-loop reinforcement learning post-training for VLA policies on real robots. I also develop the real-robot infrastructure that supports this work, including teleoperation and data-collection systems, as well as policy deployment and evaluation pipelines.",
+      academicPrefix: "I am a Ph.D. candidate in ",
+      institution: "Mechanical Engineering at Zhejiang University",
+      afterInstitution: " and hold a bachelor's degree from ",
+      undergraduateInstitution: "Xidian University",
+      academicSuffix: ". ",
+    },
     resultPrefix: "I have published ",
     resultStrong:
-      "9 SCI journal papers, including 2 ESI Highly Cited Papers and 1 Hot Paper",
+      "9 SCI-indexed journal articles, including 2 ESI Highly Cited Papers and 1 Hot Paper",
     resultSuffix:
-      ", together with 5 EI conference papers and 1 granted Chinese invention patent.",
+      ", along with 5 EI-indexed conference papers and 1 granted Chinese invention patent.",
   },
   sectionLabels: {
     experience: "Internships",
@@ -275,6 +301,7 @@ export const enContent: HomepageContent = {
   internships: [
     {
       company: "Meituan · LongCat Foundation Model Team",
+      logo: "/meituan-logo.png",
       role: "Embodied AI Research Intern",
       period: "Apr. 2026 — Present",
       summary:
@@ -287,7 +314,8 @@ export const enContent: HomepageContent = {
       ],
     },
     {
-      company: "Hangzhou WuWen SiliconOne Technology",
+      company: "Simple Silicon Innovation",
+      logo: "/siliconone-logo.png",
       role: "Embodied AI Algorithm Intern · Teleoperation",
       period: "Jan. 2026 — Apr. 2026",
       summary:
@@ -334,12 +362,22 @@ export const enContent: HomepageContent = {
     ][index],
   })),
   honors: [
-    "National Scholarship for Graduate Students, Zhejiang University, 2022–2023",
-    "Outstanding Professional-Degree Graduate Practice Achievement, Zhejiang Province, 2023",
-    "Outstanding Graduate Student, Zhejiang University, 2022–2023 and 2023–2024",
-    "Weichai Power Scholarship, Zhejiang University, 2023–2024",
-    "Outstanding Winner, Mathematical Contest in Modeling (Top 1%)",
-    "Outstanding Graduate of Shaanxi Province",
+    {
+      text: "National Scholarship for Graduate Students, Zhejiang University, 2022–2023",
+      featured: true,
+    },
+    {
+      text: "Outstanding Practice Achievement for Professional-Degree Graduate Students, Zhejiang Province, 2023",
+    },
+    {
+      text: "Outstanding Graduate Student, Zhejiang University, 2022–2023 and 2023–2024",
+    },
+    { text: "Weichai Power Scholarship, Zhejiang University, 2023–2024" },
+    {
+      text: "Finalist, Mathematical Contest in Modeling (MCM) — Top 1%",
+      featured: true,
+    },
+    { text: "Outstanding Graduate of Shaanxi Province, China", featured: true },
   ],
   education: [
     {
