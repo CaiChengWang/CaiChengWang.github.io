@@ -497,6 +497,26 @@ a:focus-visible {
   color: var(--text);
 }
 
+.paper-authors {
+  margin: 0.2em 0 0.35em;
+  color: #6c7479;
+  font-size: 0.95em;
+  line-height: 1.4;
+}
+
+.paper-authors strong {
+  color: var(--text);
+}
+
+.publication-title,
+.publication-meta {
+  display: block;
+}
+
+.publication-list .paper-authors {
+  margin: 0.15em 0;
+}
+
 .plain-list {
   margin-bottom: 0;
 }

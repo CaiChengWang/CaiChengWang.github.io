@@ -10,6 +10,13 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
   const [featuredPaper, ...otherPapers] = content.publications;
   const scholarSearch = (title: string) =>
     `https://scholar.google.com/scholar?q=${encodeURIComponent(title)}`;
+  const renderAuthors = (authors: string[]) =>
+    authors.map((author, index) => (
+      <span key={`${author}-${index}`}>
+        {index > 0 ? ", " : ""}
+        {author === "Caicheng Wang" ? <strong>{author}</strong> : author}
+      </span>
+    ));
 
   return (
     <main id="top" lang={content.locale === "zh" ? "zh-CN" : "en"}>
@@ -234,6 +241,7 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                   <h3>
                     <a href={scholarSearch(featuredPaper.title)}>{featuredPaper.title}</a>
                   </h3>
+                  <p className="paper-authors">{renderAuthors(featuredPaper.authors)}</p>
                   <p>{featuredPaper.venue}</p>
                   <strong>{featuredPaper.note}</strong>
                 </div>
@@ -241,7 +249,13 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
               <ul className="publication-list">
                 {otherPapers.map((paper) => (
                   <li key={paper.title}>
-                    <a href={scholarSearch(paper.title)}>{paper.title}</a>, {paper.venue}, <strong>{paper.note}</strong>
+                    <a className="publication-title" href={scholarSearch(paper.title)}>
+                      {paper.title}
+                    </a>
+                    <p className="paper-authors">{renderAuthors(paper.authors)}</p>
+                    <span className="publication-meta">
+                      {paper.venue}, <strong>{paper.note}</strong>
+                    </span>
                   </li>
                 ))}
               </ul>

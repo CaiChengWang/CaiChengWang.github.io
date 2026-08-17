@@ -54,6 +54,7 @@ export type HomepageContent = {
   publications: Array<{
     abbr: string;
     title: string;
+    authors: string[];
     venue: string;
     note: string;
   }>;
@@ -68,36 +69,79 @@ const publicationBase = [
     abbr: "JIII",
     title:
       "Design for Manufacturing: A Knowledge-Integrated Learning Framework for Free-Form Pipe Routing in Aeroengines",
+    authors: [
+      "Caicheng Wang",
+      "Zili Wang",
+      "Shuyou Zhang",
+      "Yongzhe Xiang",
+      "Zheyi Li",
+      "Liangyou Li",
+      "Jianrong Tan",
+    ],
     venue: "Journal of Industrial Information Integration, 2026",
   },
   {
     abbr: "SEC",
     title:
       "Adam-assisted quantum particle swarm optimization guided by length of potential well for numerical function optimization",
+    authors: ["Caicheng Wang", "Zili Wang", "Shuyou Zhang", "Jianrong Tan"],
     venue: "Swarm and Evolutionary Computation, 2023",
   },
   {
     abbr: "JCDE",
     title:
       "Reinforced quantum-behaved particle swarm optimized neural network for cross-sectional distortion prediction of novel variable-diameter-die-formed metal bent tubes",
+    authors: [
+      "Caicheng Wang",
+      "Zili Wang",
+      "Shuyou Zhang",
+      "Xiaojian Liu",
+      "Jianrong Tan",
+    ],
     venue: "Journal of Computational Design and Engineering, 2023",
   },
   {
     abbr: "ESWA",
     title:
       "Towards high-accuracy axial springback: Mesh-based simulation of metal tube bending via graph neural networks",
+    authors: [
+      "Zili Wang",
+      "Caicheng Wang",
+      "Shuyou Zhang",
+      "Lemiao Qiu",
+      "Yaochen Lin",
+      "Jianrong Tan",
+      "Chang Sun",
+    ],
     venue: "Expert Systems with Applications, 2024",
   },
   {
     abbr: "ASOC",
     title:
       "Cross-forming-process transfer enabled graph neural networks for accurate axial-forming prediction in metal tube bending",
+    authors: [
+      "Caicheng Wang",
+      "Zili Wang",
+      "Shuyou Zhang",
+      "Yaochen Lin",
+      "Yongzhe Xiang",
+      "Le Wang",
+      "Jianrong Tan",
+    ],
     venue: "Applied Soft Computing, 2025",
   },
   {
     abbr: "SCTS",
     title:
       "Self-Learning-Based Optimization for Free-form Pipe Routing in Aeroengine with Dynamic Design Environment",
+    authors: [
+      "Caicheng Wang",
+      "Zili Wang",
+      "Shuyou Zhang",
+      "Yongzhe Xiang",
+      "Zheyi Li",
+      "Jianrong Tan",
+    ],
     venue: "Science China Technological Sciences, 2025",
   },
 ];

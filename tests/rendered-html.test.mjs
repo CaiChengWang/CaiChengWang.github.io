@@ -25,6 +25,18 @@ async function render(pathname = "/") {
   );
 }
 
+function assertPublicationAuthors(html) {
+  const authorLines = [...html.matchAll(/<p class="paper-authors">([\s\S]*?)<\/p>/g)];
+  assert.equal(authorLines.length, 6);
+  for (const [, authors] of authorLines) {
+    assert.match(authors, /<strong>Caicheng Wang<\/strong>/);
+  }
+  assert.match(
+    html,
+    /Towards high-accuracy axial springback[\s\S]*?Zili Wang[\s\S]*?<strong>Caicheng Wang<\/strong>/,
+  );
+}
+
 test("renders the Chinese recruitment homepage", async () => {
   const response = await render("/zh");
   assert.equal(response.status, 200);
@@ -56,6 +68,7 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.match(html, /src="\/featured-paper\.jpg"/);
   assert.match(html, /Graphical abstract for Design for Manufacturing/);
   assert.doesNotMatch(html, /paper-image-placeholder/);
+  assertPublicationAuthors(html);
   assert.match(html, /href="\/"/);
   assert.match(html, /wcc_wy@163\.com/);
   assert.match(html, /Google Scholar 引用/);
@@ -112,6 +125,7 @@ test("renders the English recruitment homepage", async () => {
   assert.doesNotMatch(html, /Outstanding Winner/);
   assert.match(html, /src="\/featured-paper\.jpg"/);
   assert.match(html, /Focusing on embodied AI, reinforcement learning post-training for VLA models/);
+  assertPublicationAuthors(html);
   assert.match(html, /Google Scholar citations/);
   assert.match(html, /scholar-citation-badge/);
   assert.match(html, /href="https:\/\/github\.com\/CaiChengWang"/);
