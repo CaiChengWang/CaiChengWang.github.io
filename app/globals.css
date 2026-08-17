@@ -444,6 +444,32 @@ a:focus-visible {
   font-weight: 700;
 }
 
+.internship-spotlight {
+  margin: 0.45em 0 0.75em;
+  padding: 0.55em 0.75em;
+  border-left: 3px solid var(--link);
+  background: rgba(34, 75, 141, 0.06);
+}
+
+.internship-spotlight p {
+  margin: 0;
+}
+
+.spotlight-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.35em 0.65em;
+  color: var(--link);
+}
+
+.spotlight-heading span {
+  color: #6c7479;
+  font-size: 0.85em;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
 .cv-entry ul {
   margin-bottom: 0;
 }

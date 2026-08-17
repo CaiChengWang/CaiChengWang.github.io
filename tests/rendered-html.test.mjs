@@ -57,19 +57,39 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.ok(about.indexOf("我目前在") < about.indexOf("我是"));
   assert.match(about, /我目前在[\s\S]*?美团 LongCat 基座大模型团队/);
   assert.match(about, /主要负责真实机器人 VLA 策略的人在环强化学习后训练/);
+  assert.match(about, /预计于 <strong>2027 年 6 月<\/strong>毕业/);
   assert.match(about, /本科毕业于[\s\S]*?西安电子科技大学/);
+  assert.match(about, /在审论文 1 篇/);
   assert.match(
     about,
     /美团 LongCat 基座大模型团队[\s\S]*?src="\/meituan-logo\.png"/,
   );
   assert.match(html, /美团 · LongCat 基座大模型团队/);
+  assert.match(
+    html,
+    /internship-spotlight[\s\S]*?Meituan Robotics-0 技术报告[\s\S]*?即将发布[\s\S]*?负责真机强化学习后训练与数据采集基础设施建设/,
+  );
+  assert.match(html, /基于 π0.5\/MR0 开展 HG-DAgger 策略后训练/);
+  assert.match(html, /以 π0.5\/MR0 为策略基座/);
+  assert.match(html, /Agent 离线生成任务进度图/);
+  assert.match(html, /团队现阶段主力数采方案/);
   assert.match(html, /杭州无问硅一科技有限公司/);
   assert.match(html, /src="\/siliconone-logo\.png"/);
   assert.match(html, /internship-logo-monochrome/);
   assert.match(html, /<h3><img[^>]*src="\/meituan-logo\.png"[^>]*>[\s\S]*?美团/);
   assert.match(html, /<h3><img[^>]*src="\/siliconone-logo\.png"[^>]*>[\s\S]*?杭州无问硅一/);
   assert.match(html, /代表性论文/);
+  assert.match(html, /知识迁移后精度提升 20%–30%/);
+  assert.match(html, /第一作者 · ESI 高被引 · 中科院二区 SCI/);
+  assert.match(html, /学生二作 · ESI 高被引、热点论文 · 中科院一区 TOP/);
   assert.match(html, /<strong>美国大学生数学建模竞赛（MCM）Finalist（Top 1%）<\/strong>/);
+  assert.match(
+    html,
+    /<strong>2018—2021 年连续三年获得西安电子科技大学国家励志奖学金<\/strong>/,
+  );
+  assert.match(html, /2022 年度西安电子科技大学校级优秀学生/);
+  assert.match(html, /第九届全国大学生机械创新设计大赛陕西省一等奖/);
+  assert.match(html, /第十一届全国大学生数学竞赛陕西省二等奖/);
   assert.doesNotMatch(html, /<strong>2023 年度浙江省专业学位研究生优秀实践成果奖<\/strong>/);
   assert.doesNotMatch(html, /特等提名奖/);
   assert.match(html, /src="\/featured-paper\.jpg"/);
@@ -88,6 +108,14 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.match(html, /src="\/zju-logo\.png"/);
   assert.match(html, /src="\/xidian-logo\.png"/);
   assert.match(html, /src="\/meituan-logo\.png"/);
+  assert.match(html, /GPA 3.9\/4.0，专业排名 1\/160，保研/);
+  assert.match(html, /SolidWorks/);
+  assert.match(
+    html,
+    /<dt>算法<\/dt><dd>VLA（π 系列）, HIL, HG-DAgger, RECAP, PPO, TD3, GNN, Diffusion<\/dd>/,
+  );
+  assert.doesNotMatch(html, /<dt>具身智能<\/dt>/);
+  assert.doesNotMatch(html, /CET-6|DDPG/);
   const sidebar = html.match(/<aside class="profile-sidebar"[\s\S]*?<\/aside>/)?.[0] ?? "";
   assert.match(sidebar, /fa-language[\s\S]*?fa-briefcase[\s\S]*?寻找具身智能方向的工作机会/);
   assert.match(sidebar, /Google Scholar/);
@@ -109,18 +137,33 @@ test("renders the English recruitment homepage", async () => {
   const about = html.match(/<section class="about-section"[\s\S]*?<\/section>/)?.[0] ?? "";
   assert.ok(about.indexOf("I am currently") < about.indexOf("I am a Ph.D. candidate"));
   assert.match(about, /I am currently an Embodied AI Research Intern on/);
-  assert.match(about, /hold a bachelor&#x27;s degree from[\s\S]*?Xidian University/);
+  assert.match(about, /expect to graduate in <strong>June 2027<\/strong>/);
+  assert.match(about, /I hold a bachelor&#x27;s degree from[\s\S]*?Xidian University/);
   assert.match(about, /9 SCI-indexed journal articles/);
+  assert.match(about, /1 manuscript under review/);
   assert.match(
     about,
-    /Meituan&#x27;s LongCat foundation-model team[\s\S]*?src="\/meituan-logo\.png"/,
+    /Meituan&#x27;s LongCat team[\s\S]*?src="\/meituan-logo\.png"/,
   );
-  assert.match(html, /Meituan · LongCat Foundation Model Team/);
+  assert.match(html, /Meituan · LongCat Team/);
+  assert.match(
+    html,
+    /internship-spotlight[\s\S]*?Meituan Robotics-0 Technical Report[\s\S]*?Coming Soon[\s\S]*?Responsible for real-robot reinforcement learning post-training and data-collection infrastructure/,
+  );
+  assert.match(html, /π0.5\/MR0 base policy/);
+  assert.match(html, /task progress graph offline/);
+  assert.match(html, /team&#x27;s primary data-collection setup/);
   assert.match(html, /Simple Silicon Innovation/);
   assert.doesNotMatch(html, /Hangzhou WuWen SiliconOne Technology/);
   assert.match(html, /src="\/siliconone-logo\.png"/);
   assert.match(html, /<h3><img[^>]*src="\/meituan-logo\.png"[^>]*>[\s\S]*?Meituan/);
   assert.match(html, /Selected Publications/);
+  assert.match(html, /improving accuracy by 20%–30% after knowledge transfer/);
+  assert.match(html, /First author · ESI Highly Cited Paper · CAS Q2/);
+  assert.match(
+    html,
+    /Student second author · ESI Highly Cited &amp; Hot Paper · CAS Q1 TOP/,
+  );
   assert.match(
     html,
     /<strong>Finalist, Mathematical Contest in Modeling \(MCM\) — Top 1%<\/strong>/,
@@ -128,6 +171,19 @@ test("renders the English recruitment homepage", async () => {
   assert.doesNotMatch(
     html,
     /<strong>Outstanding Practice Achievement for Professional-Degree Graduate Students/,
+  );
+  assert.match(
+    html,
+    /<strong>National Encouragement Scholarship, Xidian University, 2018–2021 \(three consecutive years\)<\/strong>/,
+  );
+  assert.match(html, /Outstanding Student, Xidian University, 2022/);
+  assert.match(
+    html,
+    /First Prize, Shaanxi Division, 9th National Undergraduate Mechanical Innovation Design Competition/,
+  );
+  assert.match(
+    html,
+    /Second Prize, Shaanxi Division, The 11th Chinese Mathematics Competitions for College Students/,
   );
   assert.match(html, /Outstanding Graduate of Shaanxi Province, China/);
   assert.doesNotMatch(html, /Outstanding Winner/);
@@ -143,6 +199,14 @@ test("renders the English recruitment homepage", async () => {
   assert.match(html, /src="\/zju-logo\.png"/);
   assert.match(html, /src="\/xidian-logo\.png"/);
   assert.match(html, /src="\/meituan-logo\.png"/);
+  assert.match(html, /GPA 3.9\/4.0 · Rank 1\/160 · Recommended for graduate admission/);
+  assert.match(html, /SolidWorks/);
+  assert.match(
+    html,
+    /<dt>Algorithms<\/dt><dd>VLA \(π series\), HIL, HG-DAgger, RECAP, PPO, TD3, GNN, Diffusion<\/dd>/,
+  );
+  assert.doesNotMatch(html, /<dt>Embodied AI<\/dt>/);
+  assert.doesNotMatch(html, /CET-6|DDPG/);
   const sidebar = html.match(/<aside class="profile-sidebar"[\s\S]*?<\/aside>/)?.[0] ?? "";
   assert.match(sidebar, /fa-language[\s\S]*?fa-briefcase[\s\S]*?Seeking opportunities in Embodied AI/);
   assert.match(sidebar, /Google Scholar/);

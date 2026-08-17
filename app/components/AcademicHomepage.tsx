@@ -146,6 +146,8 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                 />
               </span>
               {content.about.introduction.afterInstitution}
+              <strong>{content.about.introduction.expectedGraduation}</strong>
+              {content.about.introduction.afterGraduation}
               <span className="about-institution">
                 {content.about.introduction.undergraduateInstitution}
                 <Image
@@ -199,6 +201,15 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                   <time>{internship.period}</time>
                 </div>
                 <p className="entry-role">{internship.role}</p>
+                {internship.spotlight ? (
+                  <div className="internship-spotlight">
+                    <p className="spotlight-heading">
+                      <strong>{internship.spotlight.title}</strong>
+                      <span>{internship.spotlight.status}</span>
+                    </p>
+                    <p>{internship.spotlight.description}</p>
+                  </div>
+                ) : null}
                 <p>{internship.summary}</p>
                 <ul>
                   {internship.highlights.map((highlight) => (

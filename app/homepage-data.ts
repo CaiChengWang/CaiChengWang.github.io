@@ -22,6 +22,8 @@ export type HomepageContent = {
       academicPrefix: string;
       institution: string;
       afterInstitution: string;
+      expectedGraduation: string;
+      afterGraduation: string;
       undergraduateInstitution: string;
       academicSuffix: string;
     };
@@ -43,6 +45,11 @@ export type HomepageContent = {
     role: string;
     period: string;
     summary: string;
+    spotlight?: {
+      title: string;
+      status: string;
+      description: string;
+    };
     highlights: string[];
   }>;
   projects: Array<{
@@ -69,7 +76,7 @@ const publicationBase = [
   {
     abbr: "JIII",
     title:
-      "Design for Manufacturing: A Knowledge-Integrated Learning Framework for Free-Form Pipe Routing in Aeroengines",
+      "Design for Manufacturing: A Manufacturability Knowledge-Integrated Reinforcement Learning Framework for Free-Form Pipe Routing in Aeroengines",
     authors: [
       "Caicheng Wang",
       "Zili Wang",
@@ -93,7 +100,7 @@ const publicationBase = [
   {
     abbr: "JCDE",
     title:
-      "Reinforced quantum-behaved particle swarm optimized neural network for cross-sectional distortion prediction of novel variable-diameter-die-formed metal bent tubes",
+      "Reinforced quantum-behaved particle swarm-optimized neural network for cross-sectional distortion prediction of novel variable-diameter-die-formed metal bent tubes",
     authors: [
       "Caicheng Wang",
       "Zili Wang",
@@ -107,7 +114,7 @@ const publicationBase = [
   {
     abbr: "ESWA",
     title:
-      "Towards high-accuracy axial springback: Mesh-based simulation of metal tube bending via graph neural networks",
+      "Towards high-accuracy axial springback: Mesh-based simulation of metal tube bending via geometry/process-integrated graph neural networks",
     authors: [
       "Zili Wang",
       "Caicheng Wang",
@@ -186,13 +193,16 @@ export const zhContent: HomepageContent = {
         "担任具身智能前沿研究实习生，主要负责真实机器人 VLA 策略的人在环强化学习后训练。同时，我也搭建支撑这项工作的真机基础设施，包括遥操作与数据采集系统，以及策略部署与评测流程。",
       academicPrefix: "我是",
       institution: "浙江大学机械工程学院",
-      afterInstitution: "博士研究生，本科毕业于",
+      afterInstitution: "博士研究生，预计于 ",
+      expectedGraduation: "2027 年 6 月",
+      afterGraduation: "毕业。本科毕业于",
       undergraduateInstitution: "西安电子科技大学",
       academicSuffix: "。",
     },
     resultPrefix: "目前已发表",
     resultStrong: "SCI 论文 9 篇（ESI 高被引 2 篇、热点论文 1 篇）",
-    resultSuffix: "，另有 EI 会议论文 5 篇、授权国家发明专利 1 项。",
+    resultSuffix:
+      "，另有 EI 会议论文 5 篇、授权国家发明专利 1 项及在审论文 1 篇。",
   },
   sectionLabels: {
     experience: "实习经历",
@@ -210,11 +220,16 @@ export const zhContent: HomepageContent = {
       period: "2026.04 — 至今",
       summary:
         "针对精细化操作与长程任务的真机部署瓶颈，开展 Human-in-the-Loop 真机策略后训练，并主导多套机械臂数采基础设施建设。",
+      spotlight: {
+        title: "Meituan Robotics-0 技术报告",
+        status: "即将发布",
+        description: "负责真机强化学习后训练与数据采集基础设施建设。",
+      },
       highlights: [
-        "基于 π0.5 开展 HG-DAgger 策略后训练，将人类实时纠正帧聚合进 Buffer 进行监督微调；经 3 轮迭代，插网线任务成功率从近乎 0% 提升至接近 90%。",
-        "落地 RECAP（π0.6*）真机强化学习后训练：训练价值函数、计算 N-step 优势、筛选 Top 30% 优质帧，并以 Advantage-Conditioned CFG 微调策略，成功率提升至接近 90%。",
-        "提出 Agent-in-the-Loop 自动化纠偏方案：在 RoboTwin 中定位策略失败时刻，由 cuRobo 接管并合成成功轨迹，构建采集、训练、评测自动流转的数据飞轮。",
-        "搭建松灵 Piper 主从臂 HIL 三模式数采系统、方舟 AC-one 拖动示教系统，以及基于 Meta Quest 3 与 MoveIt Servo 的 VR 遥操作系统。",
+        "基于 π0.5/MR0 开展 HG-DAgger 策略后训练，将人类实时纠正帧聚合进 Buffer 进行监督微调；经 3 轮迭代，插网线任务成功率从近乎 0% 提升至接近 90%。",
+        "落地 RECAP（π0.6*）真机强化学习后训练：以 π0.5/MR0 为策略基座，基于包含策略 Rollout 与人类纠正帧的 HIL 数据集训练价值函数，计算 N-step 优势并筛选 Top 30% 优质帧，以 Advantage-Conditioned CFG 微调策略，成功率提升至接近 90%。",
+        "构建 Agent 与 cuRobo 协同的仿真 HIL 实验平台：Agent 离线生成任务进度图，运行时识别任务阶段及策略停滞、倒退等异常，自动判断接管时机并触发 cuRobo 生成纠错轨迹，形成数据采集、策略迭代与效果评测的自动化实验闭环。",
+        "搭建松灵 Piper 主从臂 HIL 三模式数采系统；构建方舟 AC-one 拖动示教系统，作为团队现阶段主力数采方案；采用帧间增量速度控制与 MoveIt Servo IK，构建基于 Meta Quest 3 的 VR 遥操作系统。",
       ],
     },
     {
@@ -243,7 +258,7 @@ export const zhContent: HomepageContent = {
       title: "图神经网络与迁移学习可变形体仿真器",
       period: "2022 — 2024",
       description:
-        "提出融入物理先验的 Encode-Process-Decode 图网络替代有限元计算，推理速度较 FEM 提升 6 个数量级，平均仿真误差小于 1 mm。",
+        "提出融入物理先验的 Encode-Process-Decode 图网络替代有限元计算，推理速度较 FEM 提升 6 个数量级，平均仿真误差小于 1 mm，知识迁移后精度提升 20%–30%。",
       output: "产出 ESI 高被引论文 2 篇、热点论文 1 篇。",
     },
     {
@@ -259,8 +274,8 @@ export const zhContent: HomepageContent = {
     note: [
       "第一作者 · 中科院一区 TOP",
       "第一作者 · 中科院一区 TOP",
-      "第一作者 · ESI 高被引",
-      "学生二作 · ESI 高被引、热点论文",
+      "第一作者 · ESI 高被引 · 中科院二区 SCI",
+      "学生二作 · ESI 高被引、热点论文 · 中科院一区 TOP",
       "第一作者 · 中科院二区 TOP",
       "第一作者 · 中科院一区 TOP",
     ][index],
@@ -272,6 +287,13 @@ export const zhContent: HomepageContent = {
     { text: "2023—2024 年度浙江大学潍柴动力奖学金" },
     { text: "美国大学生数学建模竞赛（MCM）Finalist（Top 1%）", featured: true },
     { text: "陕西省优秀毕业生", featured: true },
+    {
+      text: "2018—2021 年连续三年获得西安电子科技大学国家励志奖学金",
+      featured: true,
+    },
+    { text: "2022 年度西安电子科技大学校级优秀学生" },
+    { text: "第九届全国大学生机械创新设计大赛陕西省一等奖" },
+    { text: "第十一届全国大学生数学竞赛陕西省二等奖" },
   ],
   education: [
     {
@@ -282,14 +304,20 @@ export const zhContent: HomepageContent = {
     {
       period: "2018.09 — 2022.06",
       school: "西安电子科技大学",
-      degree: "机械设计制造及其自动化 · 本科（专业排名 1/160，保研）",
+      degree:
+        "机械设计制造及其自动化 · 本科（GPA 3.9/4.0，专业排名 1/160，保研）",
     },
   ],
   skills: [
     { label: "编程与框架", value: "Python, PyTorch, ROS2" },
-    { label: "具身智能", value: "VLA（π 系列）, HIL, HG-DAgger, RECAP" },
-    { label: "算法", value: "PPO, TD3, DDPG, GNN, Diffusion" },
-    { label: "平台与工具", value: "MuJoCo, Unity, MoveIt Servo, Linux" },
+    {
+      label: "算法",
+      value: "VLA（π 系列）, HIL, HG-DAgger, RECAP, PPO, TD3, GNN, Diffusion",
+    },
+    {
+      label: "平台与工具",
+      value: "MuJoCo, Unity, SolidWorks, MoveIt Servo, Linux",
+    },
     {
       label: "真机平台",
       value: "Franka FR3, 松灵 Piper, 方舟 AC-one, 星海图 R1 PRO",
@@ -326,12 +354,14 @@ export const enContent: HomepageContent = {
     title: "About Me",
     introduction: {
       professionalPrefix: "I am currently an Embodied AI Research Intern on ",
-      employer: "Meituan's LongCat foundation-model team",
+      employer: "Meituan's LongCat team",
       professionalSuffix:
         ", where I focus on human-in-the-loop reinforcement learning post-training for VLA policies on real robots. I also develop the real-robot infrastructure that supports this work, including teleoperation and data-collection systems, as well as policy deployment and evaluation pipelines.",
       academicPrefix: "I am a Ph.D. candidate in ",
       institution: "Mechanical Engineering at Zhejiang University",
-      afterInstitution: " and hold a bachelor's degree from ",
+      afterInstitution: " and expect to graduate in ",
+      expectedGraduation: "June 2027",
+      afterGraduation: ". I hold a bachelor's degree from ",
       undergraduateInstitution: "Xidian University",
       academicSuffix: ". ",
     },
@@ -339,7 +369,7 @@ export const enContent: HomepageContent = {
     resultStrong:
       "9 SCI-indexed journal articles, including 2 ESI Highly Cited Papers and 1 Hot Paper",
     resultSuffix:
-      ", along with 5 EI-indexed conference papers and 1 granted Chinese invention patent.",
+      ", along with 5 EI-indexed conference papers, 1 granted Chinese invention patent, and 1 manuscript under review.",
   },
   sectionLabels: {
     experience: "Internships",
@@ -351,17 +381,23 @@ export const enContent: HomepageContent = {
   },
   internships: [
     {
-      company: "Meituan · LongCat Foundation Model Team",
+      company: "Meituan · LongCat Team",
       logo: "/meituan-logo.png",
       role: "Embodied AI Research Intern",
       period: "Apr. 2026 — Present",
       summary:
         "Conducting Human-in-the-Loop real-robot policy post-training for precise and long-horizon manipulation, while leading data-collection infrastructure development across multiple robot platforms.",
+      spotlight: {
+        title: "Meituan Robotics-0 Technical Report",
+        status: "Coming Soon",
+        description:
+          "Responsible for real-robot reinforcement learning post-training and data-collection infrastructure.",
+      },
       highlights: [
-        "Performed HG-DAgger post-training on a π0.5 base policy by aggregating real-time human corrections into a supervised fine-tuning buffer. After three iterations, cable-insertion success increased from nearly 0% to approximately 90%.",
-        "Implemented RECAP (π0.6*) post-training by learning a value function, computing N-step advantages, selecting the top 30% frames, and fine-tuning the policy with Advantage-Conditioned CFG; success increased to approximately 90%.",
-        "Proposed an Agent-in-the-Loop correction pipeline in RoboTwin, where cuRobo identifies and takes over from failure states to synthesize successful trajectories for an automated collection-training-evaluation loop.",
-        "Built a three-mode HIL collection system for dual Piper arms, a kinesthetic teaching system for ARX AC-one, and a Meta Quest 3 VR teleoperation system using MoveIt Servo.",
+        "Performed HG-DAgger post-training on a π0.5/MR0 base policy by aggregating real-time human corrections into a supervised fine-tuning buffer. After three iterations, cable-insertion success increased from nearly 0% to approximately 90%.",
+        "Implemented RECAP (π0.6*) real-robot reinforcement learning post-training on a π0.5/MR0 base policy. Trained a value function on an HIL dataset containing policy rollouts and human-correction frames, computed N-step advantages, selected the top 30% frames, and fine-tuned the policy with Advantage-Conditioned CFG; success increased to approximately 90%.",
+        "Built a simulated HIL platform in RoboTwin combining an agent with cuRobo. The agent generates a task progress graph offline, recognizes task phases and detects policy stalls or regressions at runtime, determines when to intervene, and triggers cuRobo to generate corrective trajectories for an automated data-collection, policy-iteration, and evaluation loop.",
+        "Built a three-mode HIL collection system for a Piper leader-follower setup; developed an ARX AC-one kinesthetic teaching system as the team's primary data-collection setup; and built a Meta Quest 3 VR teleoperation system using incremental velocity control and MoveIt Servo IK.",
       ],
     },
     {
@@ -390,7 +426,7 @@ export const enContent: HomepageContent = {
       title: "Graph Neural Simulator with Transfer Learning",
       period: "2022 — 2024",
       description:
-        "Developed a physics-informed Encode-Process-Decode graph network to replace finite-element simulation, improving inference speed by six orders of magnitude while keeping average error below 1 mm.",
+        "Developed a physics-informed Encode-Process-Decode graph network to replace finite-element simulation, improving inference speed by six orders of magnitude while keeping average error below 1 mm and improving accuracy by 20%–30% after knowledge transfer.",
       output: "Two ESI Highly Cited Papers and one Hot Paper.",
     },
     {
@@ -406,8 +442,8 @@ export const enContent: HomepageContent = {
     note: [
       "First author · CAS Q1 TOP",
       "First author · CAS Q1 TOP",
-      "First author · ESI Highly Cited Paper",
-      "Student second author · ESI Highly Cited & Hot Paper",
+      "First author · ESI Highly Cited Paper · CAS Q2",
+      "Student second author · ESI Highly Cited & Hot Paper · CAS Q1 TOP",
       "First author · CAS Q2 TOP",
       "First author · CAS Q1 TOP",
     ][index],
@@ -429,6 +465,17 @@ export const enContent: HomepageContent = {
       featured: true,
     },
     { text: "Outstanding Graduate of Shaanxi Province, China", featured: true },
+    {
+      text: "National Encouragement Scholarship, Xidian University, 2018–2021 (three consecutive years)",
+      featured: true,
+    },
+    { text: "Outstanding Student, Xidian University, 2022" },
+    {
+      text: "First Prize, Shaanxi Division, 9th National Undergraduate Mechanical Innovation Design Competition",
+    },
+    {
+      text: "Second Prize, Shaanxi Division, The 11th Chinese Mathematics Competitions for College Students",
+    },
   ],
   education: [
     {
@@ -440,14 +487,19 @@ export const enContent: HomepageContent = {
       period: "Sep. 2018 — Jun. 2022",
       school: "Xidian University",
       degree:
-        "B.Eng. in Mechanical Design, Manufacturing and Automation · Rank 1/160",
+        "B.Eng. in Mechanical Design, Manufacturing and Automation · GPA 3.9/4.0 · Rank 1/160 · Recommended for graduate admission",
     },
   ],
   skills: [
     { label: "Programming & Frameworks", value: "Python, PyTorch, ROS2" },
-    { label: "Embodied AI", value: "VLA (π series), HIL, HG-DAgger, RECAP" },
-    { label: "Algorithms", value: "PPO, TD3, DDPG, GNN, Diffusion" },
-    { label: "Platforms & Tools", value: "MuJoCo, Unity, MoveIt Servo, Linux" },
+    {
+      label: "Algorithms",
+      value: "VLA (π series), HIL, HG-DAgger, RECAP, PPO, TD3, GNN, Diffusion",
+    },
+    {
+      label: "Platforms & Tools",
+      value: "MuJoCo, Unity, SolidWorks, MoveIt Servo, Linux",
+    },
     {
       label: "Robot Platforms",
       value: "Franka FR3, AgileX Piper, ARX AC-one, Galaxea R1 PRO",
