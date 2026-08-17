@@ -56,6 +56,7 @@ export type HomepageContent = {
     title: string;
     authors: string[];
     venue: string;
+    impactFactor: string;
     note: string;
   }>;
   honors: Array<{ text: string; featured?: boolean }>;
@@ -79,6 +80,7 @@ const publicationBase = [
       "Jianrong Tan",
     ],
     venue: "Journal of Industrial Information Integration, 2026",
+    impactFactor: "11.16",
   },
   {
     abbr: "SEC",
@@ -86,6 +88,7 @@ const publicationBase = [
       "Adam-assisted quantum particle swarm optimization guided by length of potential well for numerical function optimization",
     authors: ["Caicheng Wang", "Zili Wang", "Shuyou Zhang", "Jianrong Tan"],
     venue: "Swarm and Evolutionary Computation, 2023",
+    impactFactor: "10.0",
   },
   {
     abbr: "JCDE",
@@ -99,6 +102,7 @@ const publicationBase = [
       "Jianrong Tan",
     ],
     venue: "Journal of Computational Design and Engineering, 2023",
+    impactFactor: "4.9",
   },
   {
     abbr: "ESWA",
@@ -114,6 +118,7 @@ const publicationBase = [
       "Chang Sun",
     ],
     venue: "Expert Systems with Applications, 2024",
+    impactFactor: "7.5",
   },
   {
     abbr: "ASOC",
@@ -129,6 +134,7 @@ const publicationBase = [
       "Jianrong Tan",
     ],
     venue: "Applied Soft Computing, 2025",
+    impactFactor: "6.6",
   },
   {
     abbr: "SCTS",
@@ -143,6 +149,7 @@ const publicationBase = [
       "Jianrong Tan",
     ],
     venue: "Science China Technological Sciences, 2025",
+    impactFactor: "4.9",
   },
 ];
 

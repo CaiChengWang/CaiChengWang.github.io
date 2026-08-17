@@ -37,6 +37,13 @@ function assertPublicationAuthors(html) {
   );
 }
 
+function assertPublicationImpactFactors(html) {
+  const impactFactors = [...html.matchAll(/IF = (?:<!-- -->)?([0-9.]+)/g)].map(
+    (match) => match[1],
+  );
+  assert.deepEqual(impactFactors, ["11.16", "10.0", "4.9", "7.5", "6.6", "4.9"]);
+}
+
 test("renders the Chinese recruitment homepage", async () => {
   const response = await render("/zh");
   assert.equal(response.status, 200);
@@ -69,6 +76,7 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.match(html, /Graphical abstract for Design for Manufacturing/);
   assert.doesNotMatch(html, /paper-image-placeholder/);
   assertPublicationAuthors(html);
+  assertPublicationImpactFactors(html);
   assert.match(html, /href="\/"/);
   assert.match(html, /wcc_wy@163\.com/);
   assert.match(html, /Google Scholar 引用/);
@@ -126,6 +134,7 @@ test("renders the English recruitment homepage", async () => {
   assert.match(html, /src="\/featured-paper\.jpg"/);
   assert.match(html, /Focusing on embodied AI, reinforcement learning post-training for VLA models/);
   assertPublicationAuthors(html);
+  assertPublicationImpactFactors(html);
   assert.match(html, /Google Scholar citations/);
   assert.match(html, /scholar-citation-badge/);
   assert.match(html, /href="https:\/\/github\.com\/CaiChengWang"/);

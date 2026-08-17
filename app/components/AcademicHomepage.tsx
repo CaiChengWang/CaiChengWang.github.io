@@ -242,7 +242,7 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                     <a href={scholarSearch(featuredPaper.title)}>{featuredPaper.title}</a>
                   </h3>
                   <p className="paper-authors">{renderAuthors(featuredPaper.authors)}</p>
-                  <p>{featuredPaper.venue}</p>
+                  <p>{featuredPaper.venue} · IF = {featuredPaper.impactFactor}</p>
                   <strong>{featuredPaper.note}</strong>
                 </div>
               </article>
@@ -254,7 +254,7 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                     </a>
                     <p className="paper-authors">{renderAuthors(paper.authors)}</p>
                     <span className="publication-meta">
-                      {paper.venue}, <strong>{paper.note}</strong>
+                      {paper.venue} · IF = {paper.impactFactor}, <strong>{paper.note}</strong>
                     </span>
                   </li>
                 ))}
