@@ -69,7 +69,6 @@ export type HomepageContent = {
   honors: Array<{ text: string; featured?: boolean }>;
   education: Array<{ period: string; school: string; degree: string }>;
   skills: Array<{ label: string; value: string }>;
-  footer: string;
 };
 
 const publicationBase = [
@@ -323,7 +322,6 @@ export const zhContent: HomepageContent = {
       value: "Franka FR3, 松灵 Piper, 方舟 AC-one, 星海图 R1 PRO",
     },
   ],
-  footer: "欢迎就具身智能、VLA 策略后训练与机器人真机部署方向交流。",
 };
 
 export const enContent: HomepageContent = {
@@ -505,6 +503,4 @@ export const enContent: HomepageContent = {
       value: "Franka FR3, AgileX Piper, ARX AC-one, Galaxea R1 PRO",
     },
   ],
-  footer:
-    "I welcome conversations about embodied AI, VLA post-training, and real-robot deployment.",
 };

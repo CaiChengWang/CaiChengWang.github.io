@@ -308,7 +308,6 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
           </section>
 
           <footer className="site-footer">
-            <p>{content.footer}</p>
             <p
               className="visitor-counter"
               id="busuanzi_container_site_pv"

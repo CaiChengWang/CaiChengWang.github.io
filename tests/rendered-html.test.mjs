@@ -116,6 +116,7 @@ test("renders the Chinese recruitment homepage", async () => {
   );
   assert.doesNotMatch(html, /<dt>具身智能<\/dt>/);
   assert.doesNotMatch(html, /CET-6|DDPG/);
+  assert.doesNotMatch(html, /欢迎就具身智能/);
   assert.match(
     html,
     /id="busuanzi_container_site_pv"[\s\S]*?访客[\s\S]*?id="busuanzi_value_site_uv"[\s\S]*?浏览[\s\S]*?id="busuanzi_value_site_pv"/,
@@ -211,6 +212,7 @@ test("renders the English recruitment homepage", async () => {
   );
   assert.doesNotMatch(html, /<dt>Embodied AI<\/dt>/);
   assert.doesNotMatch(html, /CET-6|DDPG/);
+  assert.doesNotMatch(html, /I welcome conversations about embodied AI/);
   assert.match(
     html,
     /id="busuanzi_container_site_pv"[\s\S]*?Unique visitors[\s\S]*?id="busuanzi_value_site_uv"[\s\S]*?Page views[\s\S]*?id="busuanzi_value_site_pv"/,
