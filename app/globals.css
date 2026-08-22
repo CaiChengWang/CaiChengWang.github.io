@@ -564,6 +564,28 @@ a:focus-visible {
   margin-left: 1em;
 }
 
+.site-footer {
+  margin-top: 2em;
+  padding: 1em 0 2em;
+  border-top: 1px solid var(--border);
+  color: #6c7479;
+  font-size: 0.9em;
+}
+
+.visitor-counter {
+  display: none;
+  margin-top: 0.25em;
+}
+
+.visitor-counter > span + span {
+  margin-left: 0.55em;
+}
+
+.visitor-counter strong {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
 :focus-visible {
   outline: 3px solid rgba(34, 75, 141, 0.35);
   outline-offset: 3px;

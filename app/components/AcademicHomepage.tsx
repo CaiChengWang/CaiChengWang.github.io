@@ -307,6 +307,24 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
             </dl>
           </section>
 
+          <footer className="site-footer">
+            <p>{content.footer}</p>
+            <p
+              className="visitor-counter"
+              id="busuanzi_container_site_pv"
+              aria-label={isChinese ? "网站访问统计" : "Website visitor statistics"}
+            >
+              <span>
+                {isChinese ? "访客" : "Unique visitors"}{" "}
+                <strong id="busuanzi_value_site_uv" />
+              </span>
+              <span aria-hidden="true">·</span>
+              <span>
+                {isChinese ? "浏览" : "Page views"}{" "}
+                <strong id="busuanzi_value_site_pv" />
+              </span>
+            </p>
+          </footer>
         </div>
       </div>
     </main>

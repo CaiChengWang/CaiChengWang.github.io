@@ -116,6 +116,10 @@ test("renders the Chinese recruitment homepage", async () => {
   );
   assert.doesNotMatch(html, /<dt>具身智能<\/dt>/);
   assert.doesNotMatch(html, /CET-6|DDPG/);
+  assert.match(
+    html,
+    /id="busuanzi_container_site_pv"[\s\S]*?访客[\s\S]*?id="busuanzi_value_site_uv"[\s\S]*?浏览[\s\S]*?id="busuanzi_value_site_pv"/,
+  );
   const sidebar = html.match(/<aside class="profile-sidebar"[\s\S]*?<\/aside>/)?.[0] ?? "";
   assert.match(sidebar, /fa-language[\s\S]*?fa-briefcase[\s\S]*?寻找具身智能方向的工作机会/);
   assert.match(sidebar, /Google Scholar/);
@@ -207,6 +211,10 @@ test("renders the English recruitment homepage", async () => {
   );
   assert.doesNotMatch(html, /<dt>Embodied AI<\/dt>/);
   assert.doesNotMatch(html, /CET-6|DDPG/);
+  assert.match(
+    html,
+    /id="busuanzi_container_site_pv"[\s\S]*?Unique visitors[\s\S]*?id="busuanzi_value_site_uv"[\s\S]*?Page views[\s\S]*?id="busuanzi_value_site_pv"/,
+  );
   const sidebar = html.match(/<aside class="profile-sidebar"[\s\S]*?<\/aside>/)?.[0] ?? "";
   assert.match(sidebar, /fa-language[\s\S]*?fa-briefcase[\s\S]*?Seeking opportunities in Embodied AI/);
   assert.match(sidebar, /Google Scholar/);
@@ -240,9 +248,10 @@ test("removes disposable starter assets", async () => {
 });
 
 test("keeps the AcadHomepage typography and grid contract", async () => {
-  const [styles, homepage] = await Promise.all([
+  const [styles, homepage, layout] = await Promise.all([
     readFile(new URL("app/globals.css", root), "utf8"),
     readFile(new URL("app/components/AcademicHomepage.tsx", root), "utf8"),
+    readFile(new URL("app/layout.tsx", root), "utf8"),
   ]);
 
   assert.match(styles, /font-size:\s*15px/);
@@ -258,6 +267,11 @@ test("keeps the AcadHomepage typography and grid contract", async () => {
   assert.match(styles, /Font Awesome 5 Brands/);
   assert.match(styles, /\.scholar-citation-badge/);
   assert.match(homepage, /<ul className="nav-links">/);
+  assert.match(homepage, /className="visitor-counter"/);
+  assert.match(
+    layout,
+    /https:\/\/busuanzi\.ibruce\.info\/busuanzi\/2\.3\/busuanzi\.pure\.mini\.js/,
+  );
 });
 
 test("ships search-engine discovery files", async () => {

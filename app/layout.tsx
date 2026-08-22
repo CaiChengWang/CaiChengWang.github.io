@@ -62,6 +62,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <script
+          async
+          src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"
+        />
         <link
           rel="preload"
           href="/fonts/fa-solid-900.woff2"
