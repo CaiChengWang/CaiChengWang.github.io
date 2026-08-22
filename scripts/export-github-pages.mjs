@@ -11,6 +11,8 @@ const routes = [
   { pathname: "/en", output: "en/index.html" },
   { pathname: "/zh", output: "zh/index.html" },
 ];
+const visitorCounterScript =
+  '<script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>';
 
 const { default: worker } = await import(workerUrl.href);
 
@@ -37,7 +39,8 @@ async function renderRoute(pathname) {
   return (await response.text())
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
     .replace(/<link\b[^>]*rel=["']modulepreload["'][^>]*>/gi, "")
-    .replaceAll("http://localhost:3000", siteUrl.origin);
+    .replaceAll("http://localhost:3000", siteUrl.origin)
+    .replace("</head>", `${visitorCounterScript}\n</head>`);
 }
 
 await rm(outputDir, { recursive: true, force: true });

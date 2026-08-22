@@ -285,4 +285,9 @@ test("ships search-engine discovery files", async () => {
   assert.match(sitemap, /https:\/\/caichengwang\.github\.io\/zh\//);
   assert.doesNotMatch(sitemap, /https:\/\/caichengwang\.github\.io\/en\//);
   assert.match(exportScript, /pathname: "\/zh", output: "zh\/index\.html"/);
+  assert.match(
+    exportScript,
+    /https:\/\/busuanzi\.ibruce\.info\/busuanzi\/2\.3\/busuanzi\.pure\.mini\.js/,
+  );
+  assert.match(exportScript, /\.replace\("<\/head>",/);
 });
