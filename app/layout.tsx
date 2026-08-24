@@ -19,6 +19,10 @@ export const metadata: Metadata = {
     "policy post-training",
     "Human-in-the-Loop",
   ],
+  robots: {
+    index: false,
+    follow: false,
+  },
   alternates: {
     canonical: "/",
     languages: {

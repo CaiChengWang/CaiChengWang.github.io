@@ -25,6 +25,13 @@ async function render(pathname = "/") {
   );
 }
 
+function assertNotIndexable(html) {
+  assert.match(
+    html,
+    /<meta[^>]+name=["']robots["'][^>]+content=["']noindex, nofollow["'][^>]*>/i,
+  );
+}
+
 function assertPublicationAuthors(html) {
   const authorLines = [...html.matchAll(/<p class="paper-authors">([\s\S]*?)<\/p>/g)];
   assert.equal(authorLines.length, 6);
@@ -50,6 +57,7 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.match(response.headers.get("content-type") ?? "", /^text\/html\b/i);
 
   const html = await response.text();
+  assertNotIndexable(html);
   assert.match(html, /<title>王才城｜具身智能算法<\/title>/i);
   assert.match(html, /VLA 策略的人在环强化学习后训练/);
   assert.match(html, /真机基础设施/);
@@ -135,6 +143,7 @@ test("renders the English recruitment homepage", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
+  assertNotIndexable(html);
   assert.match(html, /<title>Caicheng Wang \| Embodied AI<\/title>/i);
   assert.match(html, /human-in-the-loop reinforcement learning post-training for VLA policies on real robots/);
   assert.match(html, /real-robot infrastructure that supports this work/);
@@ -231,6 +240,7 @@ test("keeps the legacy English route available", async () => {
   assert.equal(response.status, 200);
 
   const html = await response.text();
+  assertNotIndexable(html);
   assert.match(html, /<title>Caicheng Wang \| Embodied AI<\/title>/i);
   assert.match(html, /rel="canonical" href="http:\/\/localhost:3000\/?"/);
   assert.match(html, /href="\/zh\/"/);
