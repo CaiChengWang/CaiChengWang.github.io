@@ -46,6 +46,7 @@ export type HomepageContent = {
     period: string;
     summary: string;
     spotlight?: {
+      label: string;
       title: string;
       status: string;
       description: string;
@@ -220,6 +221,7 @@ export const zhContent: HomepageContent = {
       summary:
         "针对精细化操作与长程任务的真机部署瓶颈，开展 Human-in-the-Loop 真机策略后训练，并主导多套机械臂数采基础设施建设。",
       spotlight: {
+        label: "美团机器人技术报告",
         title:
           "Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation",
         status: "即将发布",
@@ -387,6 +389,7 @@ export const enContent: HomepageContent = {
       summary:
         "Conducting Human-in-the-Loop real-robot policy post-training for precise and long-horizon manipulation, while leading data-collection infrastructure development across multiple robot platforms.",
       spotlight: {
+        label: "Meituan Robotics Technical Report",
         title:
           "Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation",
         status: "Coming Soon",

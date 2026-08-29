@@ -203,6 +203,9 @@ export function AcademicHomepage({ content }: { content: HomepageContent }) {
                 <p className="entry-role">{internship.role}</p>
                 {internship.spotlight ? (
                   <div className="internship-spotlight">
+                    <p className="spotlight-label">
+                      {internship.spotlight.label}
+                    </p>
                     <p className="spotlight-heading">
                       <strong>{internship.spotlight.title}</strong>
                       <span>{internship.spotlight.status}</span>
