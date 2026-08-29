@@ -220,7 +220,8 @@ export const zhContent: HomepageContent = {
       summary:
         "针对精细化操作与长程任务的真机部署瓶颈，开展 Human-in-the-Loop 真机策略后训练，并主导多套机械臂数采基础设施建设。",
       spotlight: {
-        title: "Meituan Robotics-0 技术报告",
+        title:
+          "Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation",
         status: "即将发布",
         description: "负责真机强化学习后训练与数据采集基础设施建设。",
       },
@@ -386,7 +387,8 @@ export const enContent: HomepageContent = {
       summary:
         "Conducting Human-in-the-Loop real-robot policy post-training for precise and long-horizon manipulation, while leading data-collection infrastructure development across multiple robot platforms.",
       spotlight: {
-        title: "Meituan Robotics-0 Technical Report",
+        title:
+          "Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation",
         status: "Coming Soon",
         description:
           "Responsible for real-robot reinforcement learning post-training and data-collection infrastructure.",

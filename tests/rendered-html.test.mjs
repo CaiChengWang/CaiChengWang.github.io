@@ -75,7 +75,7 @@ test("renders the Chinese recruitment homepage", async () => {
   assert.match(html, /美团 · LongCat 基座大模型团队/);
   assert.match(
     html,
-    /internship-spotlight[\s\S]*?Meituan Robotics-0 技术报告[\s\S]*?即将发布[\s\S]*?负责真机强化学习后训练与数据采集基础设施建设/,
+    /internship-spotlight[\s\S]*?Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation[\s\S]*?即将发布[\s\S]*?负责真机强化学习后训练与数据采集基础设施建设/,
   );
   assert.match(html, /基于 π0.5\/MR0 开展 HG-DAgger 策略后训练/);
   assert.match(html, /以 π0.5\/MR0 为策略基座/);
@@ -162,7 +162,7 @@ test("renders the English recruitment homepage", async () => {
   assert.match(html, /Meituan · LongCat Team/);
   assert.match(
     html,
-    /internship-spotlight[\s\S]*?Meituan Robotics-0 Technical Report[\s\S]*?Coming Soon[\s\S]*?Responsible for real-robot reinforcement learning post-training and data-collection infrastructure/,
+    /internship-spotlight[\s\S]*?Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation[\s\S]*?Coming Soon[\s\S]*?Responsible for real-robot reinforcement learning post-training and data-collection infrastructure/,
   );
   assert.match(html, /π0.5\/MR0 base policy/);
   assert.match(html, /task progress graph offline/);
