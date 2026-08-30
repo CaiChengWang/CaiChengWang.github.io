@@ -219,7 +219,7 @@ export const zhContent: HomepageContent = {
       role: "具身智能前沿研究实习生",
       period: "2026.04 — 至今",
       summary:
-        "针对精细化操作与长程任务的真机部署瓶颈，开展 Human-in-the-Loop 真机策略后训练，并主导多套机械臂数采基础设施建设。",
+        "参与技术报告《Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation》。针对精细化操作与长程操作任务的真机部署瓶颈，负责 HG-DAgger 与 RECAP（π-0.6*）真机强化学习后训练，并主导多平台机器人数采基础设施建设。",
       spotlight: {
         label: "美团机器人技术报告",
         title:
@@ -228,8 +228,8 @@ export const zhContent: HomepageContent = {
         description: "负责真机强化学习后训练与数据采集基础设施建设。",
       },
       highlights: [
-        "基于 π0.5/MR0 开展 HG-DAgger 策略后训练，将人类实时纠正帧聚合进 Buffer 进行监督微调；经 3 轮迭代，插网线任务成功率从近乎 0% 提升至接近 90%。",
-        "落地 RECAP（π0.6*）真机强化学习后训练：以 π0.5/MR0 为策略基座，基于包含策略 Rollout 与人类纠正帧的 HIL 数据集训练价值函数，计算 N-step 优势并筛选 Top 30% 优质帧，以 Advantage-Conditioned CFG 微调策略，成功率提升至接近 90%。",
+        "以 π-0.5/MR0 为基座，在真机策略 Rollout 中由操作员实时纠错，并将人类干预帧聚合至 Buffer 进行监督微调；在摆字母、叠衣服和插网线任务上开展三轮迭代，成功率分别由 23%/0%/25% 提升至 83%/83%/69%。",
+        "实现 RECAP（π-0.6*）真机强化学习后训练：以 π-0.5/MR0 为策略基座，基于包含策略 Rollout 与人类纠正帧的 HIL 数据集训练价值函数，预测 Episode 剩余完成步数；计算 N-step 优势并筛选 Top 30% 优质帧作为正标签，结合 Advantage-Conditioned Classifier-Free Guidance 微调策略。经过三轮迭代，插网线任务成功率由 SFT 的 25% 提升至 84%。",
         "构建 Agent 与 cuRobo 协同的仿真 HIL 实验平台：Agent 离线生成任务进度图，运行时识别任务阶段及策略停滞、倒退等异常，自动判断接管时机并触发 cuRobo 生成纠错轨迹，形成数据采集、策略迭代与效果评测的自动化实验闭环。",
         "搭建松灵 Piper 主从臂 HIL 三模式数采系统；构建方舟 AC-one 拖动示教系统，作为团队现阶段主力数采方案；采用帧间增量速度控制与 MoveIt Servo IK，构建基于 Meta Quest 3 的 VR 遥操作系统。",
       ],
@@ -322,7 +322,7 @@ export const zhContent: HomepageContent = {
     },
     {
       label: "真机平台",
-      value: "Franka FR3, 松灵 Piper, 方舟 AC-one, 星海图 R1 PRO",
+      value: "Franka FR3, 松灵 Piper, 方舟 AC-one, 星海图 R1 PRO, 天机 Luna",
     },
   ],
 };
@@ -387,7 +387,7 @@ export const enContent: HomepageContent = {
       role: "Embodied AI Research Intern",
       period: "Apr. 2026 — Present",
       summary:
-        "Conducting Human-in-the-Loop real-robot policy post-training for precise and long-horizon manipulation, while leading data-collection infrastructure development across multiple robot platforms.",
+        "Contributed to the technical report “Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation.” Responsible for HG-DAgger and RECAP (π-0.6*) real-robot post-training for precise and long-horizon manipulation, while leading robot data-collection infrastructure development across multiple platforms.",
       spotlight: {
         label: "Meituan Robotics Technical Report",
         title:
@@ -397,8 +397,8 @@ export const enContent: HomepageContent = {
           "Responsible for real-robot reinforcement learning post-training and data-collection infrastructure.",
       },
       highlights: [
-        "Performed HG-DAgger post-training on a π0.5/MR0 base policy by aggregating real-time human corrections into a supervised fine-tuning buffer. After three iterations, cable-insertion success increased from nearly 0% to approximately 90%.",
-        "Implemented RECAP (π0.6*) real-robot reinforcement learning post-training on a π0.5/MR0 base policy. Trained a value function on an HIL dataset containing policy rollouts and human-correction frames, computed N-step advantages, selected the top 30% frames, and fine-tuned the policy with Advantage-Conditioned CFG; success increased to approximately 90%.",
+        "Performed HG-DAgger post-training on a π-0.5/MR0 base policy by collecting real-time operator corrections during real-robot rollouts and aggregating intervention frames into a supervised fine-tuning buffer. After three iterations, success rates on letter arrangement, clothes folding, and cable insertion increased from 23%/0%/25% to 83%/83%/69%, respectively.",
+        "Implemented RECAP (π-0.6*) real-robot reinforcement learning post-training on a π-0.5/MR0 base policy. Trained a value function on an HIL dataset containing policy rollouts and human-correction frames to predict the remaining steps in each episode, then computed N-step advantages and selected the top 30% frames as positive labels for Advantage-Conditioned Classifier-Free Guidance. After three iterations, cable-insertion success increased from the SFT baseline of 25% to 84%.",
         "Built a simulated HIL platform in RoboTwin combining an agent with cuRobo. The agent generates a task progress graph offline, recognizes task phases and detects policy stalls or regressions at runtime, determines when to intervene, and triggers cuRobo to generate corrective trajectories for an automated data-collection, policy-iteration, and evaluation loop.",
         "Built a three-mode HIL collection system for a Piper leader-follower setup; developed an ARX AC-one kinesthetic teaching system as the team's primary data-collection setup; and built a Meta Quest 3 VR teleoperation system using incremental velocity control and MoveIt Servo IK.",
       ],
@@ -505,7 +505,7 @@ export const enContent: HomepageContent = {
     },
     {
       label: "Robot Platforms",
-      value: "Franka FR3, AgileX Piper, ARX AC-one, Galaxea R1 PRO",
+      value: "Franka FR3, AgileX Piper, ARX AC-one, Galaxea R1 PRO, Tianji Luna",
     },
   ],
 };

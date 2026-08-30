@@ -77,10 +77,12 @@ test("renders the Chinese recruitment homepage", async () => {
     html,
     /internship-spotlight[\s\S]*?美团机器人技术报告[\s\S]*?Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation[\s\S]*?即将发布[\s\S]*?负责真机强化学习后训练与数据采集基础设施建设/,
   );
-  assert.match(html, /基于 π0.5\/MR0 开展 HG-DAgger 策略后训练/);
-  assert.match(html, /以 π0.5\/MR0 为策略基座/);
+  assert.match(html, /摆字母、叠衣服和插网线任务/);
+  assert.match(html, /23%\/0%\/25% 提升至 83%\/83%\/69%/);
+  assert.match(html, /插网线任务成功率由 SFT 的 25% 提升至 84%/);
   assert.match(html, /Agent 离线生成任务进度图/);
   assert.match(html, /团队现阶段主力数采方案/);
+  assert.match(html, /天机 Luna/);
   assert.match(html, /杭州无问硅一科技有限公司/);
   assert.match(html, /src="\/siliconone-logo\.png"/);
   assert.match(html, /internship-logo-monochrome/);
@@ -164,9 +166,12 @@ test("renders the English recruitment homepage", async () => {
     html,
     /internship-spotlight[\s\S]*?Meituan Robotics Technical Report[\s\S]*?Meituan-Robotics-0: A Vision-Language-Action Foundation Model for Desktop Manipulation[\s\S]*?Coming Soon[\s\S]*?Responsible for real-robot reinforcement learning post-training and data-collection infrastructure/,
   );
-  assert.match(html, /π0.5\/MR0 base policy/);
+  assert.match(html, /letter arrangement, clothes folding, and cable insertion/);
+  assert.match(html, /23%\/0%\/25% to 83%\/83%\/69%/);
+  assert.match(html, /SFT baseline of 25% to 84%/);
   assert.match(html, /task progress graph offline/);
   assert.match(html, /team&#x27;s primary data-collection setup/);
+  assert.match(html, /Tianji Luna/);
   assert.match(html, /Simple Silicon Innovation/);
   assert.doesNotMatch(html, /Hangzhou WuWen SiliconOne Technology/);
   assert.match(html, /src="\/siliconone-logo\.png"/);
